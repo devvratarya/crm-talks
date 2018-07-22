@@ -1,0 +1,32 @@
+<!--
+ - Created by darya on 7/18/2018.
+ -->
+ 
+<apex:page id="initiatePC" controller="classInitiatePC">
+    <apex:form>
+        <apex:pageBlock id="block" mode="edit"  title="Platform Cache Example">
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton  action="{!getAccountOpportunitiesFromCache}" value="Get Cached Opty" reRender="target"/>
+                </apex:pageBlockSectionItem >
+            </apex:pageBlockSection>
+            <apex:pageBlockSection  columns="2">
+                <apex:pageBlockSectionItem >
+                   <apex:outputpanel id="target">
+                       <apex:pageBlockTable value="{!accountOpportunitiesMap}" var="mapAccKey">
+                           <apex:column value="{!mapAccKey.Name}"/>
+                           <apex:column >
+                               <apex:pageBlockTable value="{!accountOpportunitiesMap[mapAccKey]}" var="opty">
+                                   <apex:column value="{!opty.Id}"/>
+                                   <apex:column value="{!opty.Name}"/>
+                                   <apex:column value="{!opty.CloseDate}"/>
+                                   <apex:column value="{!opty.Amount}"/>
+                               </apex:pageBlockTable>
+                           </apex:column>
+                       </apex:pageBlockTable>
+                    </apex:outputpanel>
+                </apex:pageBlockSectionItem >
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,24 @@
+<apex:page id="CheckPlatformCacheVariable" controller="testDevvratArya2">
+    <!--<c:cacheRetrieve pcMap="{!accountsFromCache}" />-->
+    <apex:form>
+        <apex:pageBlock mode="edit" id="block">
+            <apex:pageBlockSection  columns="2">
+                <apex:pageBlockSectionItem >
+                    <apex:outputpanel>
+                        <apex:pageBlockTable value="{!accountOpportunitiesMap}" var="mapAccKey">
+                            <apex:column value="{!mapAccKey.Name}"/>
+                            <apex:column >
+                                <apex:pageBlockTable value="{!accountOpportunitiesMap[mapAccKey]}" var="opty">
+                                    <apex:column value="{!opty.Id}"/>
+                                    <apex:column value="{!opty.Name}"/>
+                                    <apex:column value="{!opty.CloseDate}"/>
+                                    <apex:column value="{!opty.Amount}"/>
+                                </apex:pageBlockTable>
+                            </apex:column>
+                        </apex:pageBlockTable>
+                    </apex:outputpanel>
+                </apex:pageBlockSectionItem >
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
